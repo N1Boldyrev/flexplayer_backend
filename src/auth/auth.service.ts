@@ -44,7 +44,7 @@ export class AuthService {
           const refresh_token = this.generateToken({ ...payload, type: Token.REFRESH }, '7d');
           await this.userService.setTokens(findUser.login, access_token, refresh_token);
           return { access_token: access_token, refresh_token: refresh_token };
-        } else throw new HttpException('Refresh token expired', HttpStatus.UNAUTHORIZED);
+        } else throw new HttpException('Refresh token expired', HttpStatus.CONFLICT);
       }
       throw new HttpException('Wrong refresh token', HttpStatus.BAD_REQUEST);
     }

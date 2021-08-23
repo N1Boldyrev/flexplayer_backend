@@ -22,4 +22,9 @@ export class AuthController {
   refresh(@Body() refreshTokenDto: RefreshTokenDto): Promise<TokenResponse> {
     return this.authService.refresh(refreshTokenDto);
   }
+
+  @Get('/check')
+  checkToken(): boolean {
+    return true;
+  }
 }
